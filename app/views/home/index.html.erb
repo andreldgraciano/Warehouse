@@ -6,3 +6,9 @@
   <%= warehouse.city %>
   <%= warehouse.area %>
 <% end %>
+
+<% if @warehouses.any? %>
+  <p>Galpão cadastrado com sucesso!</p>
+<% else %>
+  <p>Não existem galpões cadastrados.</p>
+<% end %>

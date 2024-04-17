@@ -13,6 +13,8 @@ describe 'Usuário visita tela inicial' do
 
     visit('/')
 
+    expect(page).to have_content('Galpão cadastrado com sucesso!')
+    expect(page).not_to have_content('Não existem galpões cadastrados.')
     expect(page).to have_content('Rio')
     expect(page).to have_content('SDU')
     expect(page).to have_content('Rio de Janeiro')
@@ -21,5 +23,12 @@ describe 'Usuário visita tela inicial' do
     expect(page).to have_content('SPY')
     expect(page).to have_content('São Paulo')
     expect(page).to have_content('30000')
+  end
+
+  it 'e não existem galpões cadastrados' do
+    visit('/')
+
+    expect(page).to have_content('Não existem galpões cadastrados.')
+    expect(page).not_to have_content('Galpão cadastrado com sucesso!')
   end
 end
