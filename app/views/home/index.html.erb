@@ -1,8 +1,6 @@
-<h1>Galpões & Estoque</h1>
-
 <% @warehouses.each do |warehouse|%>
   <h3><%= link_to warehouse.name, warehouse_path(warehouse.id) %></h3>
-  
+
   <ul>
     <li><p><%= warehouse.code %></p></li>
     <li><p><%= warehouse.city %></p></li>
