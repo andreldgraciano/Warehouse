@@ -5,7 +5,7 @@ describe 'Usuário vê detalhes de um galpão' do
     warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
     address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
-    visit('/')
+    visit(root_path)
     click_on 'Aeroporto SP'
 
     expect(page).to have_content('Aeroporto SP')
@@ -17,8 +17,15 @@ describe 'Usuário vê detalhes de um galpão' do
     expect(page).to have_content('Galpão do aeroporto de SP')
   end
 
-  it '' do
+  it 'e volta para a tela inicial' do
+    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
+    address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
+    visit(root_path)
+    click_on 'Aeroporto SP'
+    click_on 'Voltar'
+
+    expect(current_path).to eq(root_path)
   end
 
   it '' do

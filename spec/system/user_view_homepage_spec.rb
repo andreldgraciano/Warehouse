@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário visita tela inicial' do
   it 'e vê o nome da app' do
-    visit('/')
+    visit(root_path)
 
     expect(page).to have_content('Galpões & Estoque')
   end
@@ -11,7 +11,7 @@ describe 'Usuário visita tela inicial' do
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: '50_000')
     Warehouse.create!(name: 'Sampa', code: 'SPY', city: 'São Paulo', area: '30_000')
 
-    visit('/')
+    visit(root_path)
 
     expect(page).to have_content('Galpão cadastrado com sucesso!')
     expect(page).not_to have_content('Não existem galpões cadastrados.')
@@ -26,7 +26,7 @@ describe 'Usuário visita tela inicial' do
   end
 
   it 'e não existem galpões cadastrados' do
-    visit('/')
+    visit(root_path)
 
     expect(page).to have_content('Não existem galpões cadastrados.')
     expect(page).not_to have_content('Galpão cadastrado com sucesso!')
