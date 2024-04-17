@@ -1,10 +1,14 @@
+<nav>
+  <%= link_to 'Cadastrar Galpão', new_warehouse_path %>
+</nav>
+
 <% @warehouses.each do |warehouse|%>
   <h3><%= link_to warehouse.name, warehouse_path(warehouse.id) %></h3>
 
   <ul>
-    <li><p><%= warehouse.code %></p></li>
-    <li><p><%= warehouse.city %></p></li>
-    <li><p><%= warehouse.area %></p></li>
+    <li><p>Código: <%= warehouse.code %></p></li>
+    <li><p>Cidade: <%= warehouse.city %></p></li>
+    <li><p>Área: <%= warehouse.area %></p></li>
   </ul>
 <% end %>
 

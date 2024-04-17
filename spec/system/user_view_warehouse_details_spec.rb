@@ -27,8 +27,4 @@ describe 'Usuário vê detalhes de um galpão' do
 
     expect(current_path).to eq(root_path)
   end
-
-  it '' do
-
-  end
 end

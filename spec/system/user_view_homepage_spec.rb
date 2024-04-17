@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'Usuário visita tela inicial' do
   it 'e vê o nome da app' do
+    # Arrange
+
     visit(root_path)
 
     expect(page).to have_content('Galpões & Estoque')
@@ -13,7 +15,6 @@ describe 'Usuário visita tela inicial' do
 
     visit(root_path)
 
-    expect(page).to have_content('Galpão cadastrado com sucesso!')
     expect(page).not_to have_content('Não existem galpões cadastrados.')
     expect(page).to have_content('Rio')
     expect(page).to have_content('SDU')
@@ -26,9 +27,10 @@ describe 'Usuário visita tela inicial' do
   end
 
   it 'e não existem galpões cadastrados' do
+    # Arrange
+
     visit(root_path)
 
     expect(page).to have_content('Não existem galpões cadastrados.')
-    expect(page).not_to have_content('Galpão cadastrado com sucesso!')
   end
 end
