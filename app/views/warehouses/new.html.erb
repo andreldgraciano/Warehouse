@@ -1,38 +1,47 @@
 <h2>Cadastrando um novo galpão</h2>
 
+<% if @warehouse.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+  <% @warehouse.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @warehouse do |form| %> 
   <p>
-    <%= form.label :name, 'Nome' %>
+    <%= form.label :name %>
     <%= form.text_field :name %>
   </p>
 
   <p>
-    <%= form.label :code, 'Código' %>
+    <%= form.label :code %>
     <%= form.text_field :code %>
   </p>
 
   <p>
-    <%= form.label :city, 'Cidade' %>
+    <%= form.label :city %>
     <%= form.text_field :city %>
   </p>
 
   <p>
-    <%= form.label :area, 'Área' %>
+    <%= form.label :area %>
     <%= form.number_field :area %>
   </p>
 
   <p>
-    <%= form.label :address, 'Endereço' %>
+    <%= form.label :address %>
     <%= form.text_field :address %>
   </p>
 
   <p>
-    <%= form.label :zip, 'CEP' %>
+    <%= form.label :zip %>
     <%= form.number_field :zip %>
   </p>
 
   <p>
-    <%= form.label :description, 'Descrição' %>
+    <%= form.label :description %>
     <%= form.text_area :description %>
   </p>
 

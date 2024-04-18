@@ -53,5 +53,12 @@ describe 'Usuário cadastra um galpão' do
     click_on('Enviar')
 
     expect(page).to have_content('Galpão não cadastrado.')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
+    expect(page).to have_content('')
   end
 end
