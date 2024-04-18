@@ -6,7 +6,7 @@ describe 'Usuário vê detalhes de um galpão' do
     address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
-    click_on 'Aeroporto SP'
+    click_on('Aeroporto SP')
 
     expect(page).to have_content('Aeroporto SP')
     expect(page).to have_content('SPO')
@@ -22,8 +22,8 @@ describe 'Usuário vê detalhes de um galpão' do
     address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
-    click_on 'Aeroporto SP'
-    click_on 'Voltar'
+    click_on('Aeroporto SP')
+    click_on('Voltar')
 
     expect(current_path).to eq(root_path)
   end
