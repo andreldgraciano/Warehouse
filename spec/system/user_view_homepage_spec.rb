@@ -12,8 +12,8 @@ describe 'Usuário visita tela inicial' do
   it 'e vê os galpões cadastrados' do
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: '50_000',
     address: 'Rua do galpão RJ, 123', zip: 321312312, description: 'Descricao galpao RJ')
-    Warehouse.create!(name: 'Sampa', code: 'SPY', city: 'São Paulo', area: '30_000', address: 'Rua do galpão SP, 1213',
-    zip: 4235342523, description: 'Descricao galpao SP')
+    Warehouse.create!(name: 'Sampa', code: 'SPY', city: 'São Paulo', area: '30_000',
+    address: 'Rua do galpão SP, 313',zip: 4235342523, description: 'Descricao galpao SP')
 
     visit(root_path)
 

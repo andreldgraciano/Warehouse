@@ -1,5 +1,5 @@
 class WarehousesController < ApplicationController
-  before_action(:set_warehouse, only: [:show, :edit, :update])
+  before_action(:set_warehouse, only: [:show, :edit, :update, :destroy])
 
   def show; end
 
@@ -29,6 +29,12 @@ class WarehousesController < ApplicationController
       flash.now[:notice] = 'Galpão não pôde ser atualizado.'
       return render('edit')
     end
+  end
+
+  def destroy
+    @warehouse.destroy
+    flash[:notice] = 'Galpão removido com sucesso!'
+    redirect_to(root_path)
   end
 
   private
