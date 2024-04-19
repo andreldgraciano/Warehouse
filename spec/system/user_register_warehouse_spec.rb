@@ -53,12 +53,12 @@ describe 'Usuário cadastra um galpão' do
     click_on('Enviar')
 
     expect(page).to have_content('Galpão não cadastrado.')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
-    expect(page).to have_content('')
+    expect(page).to have_field('Nome', with: '')
+    expect(page).to have_field('Código', with: 'SPO')
+    expect(page).to have_field('Cidade', with: 'São Paulo')
+    expect(page).to have_field('Área', with: '80000')
+    expect(page).to have_field('Endereço', with: '')
+    expect(page).to have_field('CEP', with: '')
+    expect(page).to have_field('Descrição', with: 'Galpão do aeroporto de SP')
   end
 end

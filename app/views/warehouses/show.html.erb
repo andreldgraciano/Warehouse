@@ -12,4 +12,6 @@
   <li><p>CEP: <%= @warehouse.zip %></p></li>
 </ul>
 
+<%= link_to 'Editar', edit_warehouse_path(@warehouse.id) %>
+
 <%= link_to 'Voltar', root_path %>
