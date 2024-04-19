@@ -1,0 +1,15 @@
+<%= link_to 'Cadastrar Fornecedor', new_supplier_path %>
+
+<% if @suppliers.any? %>
+  <% @suppliers.each do |supplier|%>
+    <h3><%= link_to supplier.brand_name, supplier_path(supplier.id) %></h3>
+
+    <ul>
+      <li><p>Endereço: <%= supplier.city %> - <%= supplier.state %></p></li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>Não existem fornecedores cadastrados.</p>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>

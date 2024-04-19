@@ -1,9 +1,9 @@
 <h2>Cadastrando um novo galpão</h2>
 
-<% if @warehouse.errors.any? %>
+<% if @supplier.errors.any? %>
   <p>Verifique os erros abaixo:</p>
   <ul>
-  <% @warehouse.errors.full_messages.each do |msg| %>
+  <% @supplier.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
   </ul>
@@ -11,4 +11,4 @@
 
 <%= render('form') %>
 
-<%= link_to 'Cancelar', root_path %>
+<%= link_to 'Cancelar', suppliers_path %>

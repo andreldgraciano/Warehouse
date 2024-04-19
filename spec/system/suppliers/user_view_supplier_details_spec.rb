@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário vê detalhes de um galpão' do
   it 'e vê informações adicionais' do
-    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
+    Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
     address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
@@ -18,7 +18,7 @@ describe 'Usuário vê detalhes de um galpão' do
   end
 
   it 'e volta para a tela inicial' do
-    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
+    Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
     address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
 
     visit(root_path)

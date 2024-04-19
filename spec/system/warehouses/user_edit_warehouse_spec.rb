@@ -2,8 +2,14 @@ require 'rails_helper'
 
 describe 'Usuário edita um galpão' do
   it 'a partir da página de detalhes' do
-    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
-    address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
+    warehouse = Warehouse.create!(
+      name: 'Aeroporto SP',
+      code: 'SPO',
+      city: 'São Paulo',
+      area: 80_000,
+      address: 'Avenida do aeroporto ,123',
+      zip: 3812783812,
+      description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
     click_on('Aeroporto SP')
@@ -20,8 +26,14 @@ describe 'Usuário edita um galpão' do
   end
 
   it 'com sucesso' do
-    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
-    address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
+    Warehouse.create!(
+      name: 'Aeroporto SP',
+      code: 'SPO',
+      city: 'São Paulo',
+      area: 80_000,
+      address: 'Avenida do aeroporto ,123',
+      zip: 3812783812,
+      description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
     click_on('Aeroporto SP')
@@ -46,8 +58,14 @@ describe 'Usuário edita um galpão' do
   end
 
   it 'com campo vazio' do
-    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'SPO', city: 'São Paulo', area: 80_000,
-    address: 'Avenida do aeroporto ,123', zip: 3812783812, description: 'Galpão do aeroporto de SP')
+    Warehouse.create!(
+      name: 'Aeroporto SP',
+      code: 'SPO',
+      city: 'São Paulo',
+      area: 80_000,
+      address: 'Avenida do aeroporto ,123',
+      zip: 3812783812,
+      description: 'Galpão do aeroporto de SP')
 
     visit(root_path)
     click_on('Aeroporto SP')

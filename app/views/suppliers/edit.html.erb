@@ -1,0 +1,14 @@
+<h1>Editar fornecedor</h1>
+
+<% if @supplier.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+  <% @supplier.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= render('form') %>
+
+<%= link_to 'Cancelar', supplier_path(@supplier.id) %>

@@ -1,6 +1,6 @@
 class WarehousesController < ApplicationController
   before_action(:set_warehouse, only: [:show, :edit, :update, :destroy])
-
+  
   def show; end
 
   def new

@@ -1,3 +1,14 @@
 <h1>Editar galpão</h1>
 
+<% if @warehouse.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+  <% @warehouse.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= render('form') %>
+
+<%= link_to 'Cancelar', warehouse_path(@warehouse.id) %>

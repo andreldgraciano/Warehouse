@@ -1,0 +1,14 @@
+<h2>Fornecedores <%= @supplier.brand_name %></h2>
+
+<h3><%= @supplier.corporate_name %></h3>
+
+<ul>
+  <li><p>Nome: <%= @supplier.registration_number %></p></li>
+  <li><p>Cidade: <%= @supplier.full_address %></p></li>
+  <li><p>Área: <%= @supplier.city %></p></li>
+  <li><p>Endereço: <%= @supplier.state %></p></li>
+  <li><p>CEP: <%= @supplier.email %></p></li>
+</ul>
+
+<%= link_to('Editar', edit_supplier_path(@supplier.id)) %>
+<%= link_to('Voltar', suppliers_path) %>
