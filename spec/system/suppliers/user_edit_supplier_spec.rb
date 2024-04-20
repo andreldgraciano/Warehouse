@@ -24,7 +24,7 @@ describe 'Usuário edita um fornecedor' do
     expect(page).to have_field('Endereço', with: 'Rua da Samsung, 321')
     expect(page).to have_field('Cidade', with: 'São Paulo')
     expect(page).to have_field('Estado', with: 'SP')
-    expect(page).to have_field('Email', with: 'sac@samsung.com.br')
+    expect(page).to have_field('E-mail', with: 'sac@samsung.com.br')
   end
 
   it 'com sucesso' do
@@ -48,7 +48,7 @@ describe 'Usuário edita um fornecedor' do
     fill_in('Endereço', with: 'Rua da Samsung, 321')
     fill_in('Cidade', with: 'São Paulo')
     fill_in('Estado', with: 'SP')
-    fill_in('Email', with: 'sac@samsung.com.br')
+    fill_in('E-mail', with: 'sac@samsung.com.br')
     click_on('Enviar')
 
     expect(page).to have_content('Fornecedor atualizado com sucesso!')
@@ -78,7 +78,7 @@ describe 'Usuário edita um fornecedor' do
     click_on('Editar')
     fill_in('Nome Fantasia', with: '')
     fill_in('Endereço', with: '')
-    fill_in('Email', with: '')
+    fill_in('E-mail', with: '')
     click_on('Enviar')
 
     expect(page).to have_content('Fornecedor não pôde ser atualizado.')

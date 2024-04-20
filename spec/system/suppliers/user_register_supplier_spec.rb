@@ -14,7 +14,7 @@ describe 'Usuário cadastra um fornecedor' do
     expect(page).to have_field('Endereço')
     expect(page).to have_field('Cidade')
     expect(page).to have_field('Estado')
-    expect(page).to have_field('Email')
+    expect(page).to have_field('E-mail')
   end
 
   it 'com sucesso' do
@@ -29,7 +29,7 @@ describe 'Usuário cadastra um fornecedor' do
     fill_in('Endereço', with: 'Rua da Samsung, 321')
     fill_in('Cidade', with: 'São Paulo')
     fill_in('Estado', with: 'SP')
-    fill_in('Email', with: 'sac@samsung.com.br')
+    fill_in('E-mail', with: 'sac@samsung.com.br')
     click_on('Enviar')
 
     expect(current_path).to eq(supplier_path(1))
@@ -52,7 +52,7 @@ describe 'Usuário cadastra um fornecedor' do
     fill_in('Endereço', with: 'Rua da Samsung, 321')
     fill_in('Cidade', with: '')
     fill_in('Estado', with: '')
-    fill_in('Email', with: 'sac@samsung.com.br')
+    fill_in('E-mail', with: 'sac@samsung.com.br')
     click_on('Enviar')
 
     expect(page).to have_content('Fornecedor não cadastrado.')
@@ -62,6 +62,6 @@ describe 'Usuário cadastra um fornecedor' do
     expect(page).to have_field('Endereço', with: 'Rua da Samsung, 321')
     expect(page).to have_field('Cidade', with: '')
     expect(page).to have_field('Estado', with: '')
-    expect(page).to have_field('Email', with: 'sac@samsung.com.br')
+    expect(page).to have_field('E-mail', with: 'sac@samsung.com.br')
   end
 end
