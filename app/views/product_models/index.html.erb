@@ -2,7 +2,7 @@
 
 <% if @product_models.any? %>
   <% @product_models.each do |product_model|%>
-    <h3><%= link_to product_model.name, product_model_path(product_model.id) %></h3>
+    <h3><%= link_to product_model.name, product_model %></h3>
 
     <ul>
       <li><p>SKU: <%= product_model.sku %></p></li>

@@ -2,7 +2,7 @@
 
 <% if @suppliers.any? %>
   <% @suppliers.each do |supplier|%>
-    <h3><%= link_to supplier.brand_name, supplier_path(supplier.id) %></h3>
+    <h3><%= link_to supplier.brand_name, supplier %></h3>
 
     <ul>
       <li><p>Endereço: <%= supplier.city %> - <%= supplier.state %></p></li>

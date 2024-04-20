@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário edita um modelo de produto' do
   it 'a partir da página de detalhes' do
-    Supplier.create!(
+    supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
       registration_number: 362173621,
@@ -11,6 +11,15 @@ describe 'Usuário edita um modelo de produto' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    supplier_2 = Supplier.create!(
+      corporate_name: 'Nokia LTDA',
+      brand_name: 'Nokia',
+      registration_number: 1132324323,
+      full_address: 'Avenida da Nokia, 51',
+      city: 'Rio de Janeiro',
+      state: 'RJ',
+      email: 'sac@nokia.com.br'
+    )
     ProductModel.create!(
       name: 'TV-32',
       weight: 1000,
@@ -18,7 +27,7 @@ describe 'Usuário edita um modelo de produto' do
       height: 25,
       depth: 23,
       sku: 'TV32-SAMS-XPT1U',
-      supplier_id: 1
+      supplier: supplier_2
     )
 
     visit(root_path)
@@ -33,11 +42,11 @@ describe 'Usuário edita um modelo de produto' do
     expect(page).to have_field('Altura', with: '25')
     expect(page).to have_field('Profundidade', with: '23')
     expect(page).to have_field('SKU', with: 'TV32-SAMS-XPT1U')
-    expect(page).to have_select('Fornecedor', selected: 'Samsung')
+    expect(page).to have_select('Fornecedor', selected: 'Nokia')
   end
 
   it 'com sucesso' do
-    Supplier.create!(
+    supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
       registration_number: 362173621,
@@ -46,11 +55,11 @@ describe 'Usuário edita um modelo de produto' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
-    Supplier.create!(
+    supplier_2 = Supplier.create!(
       corporate_name: 'Nokia LTDA',
       brand_name: 'Nokia',
-      registration_number: 48464546,
-      full_address: 'Rua da Nokia, 321',
+      registration_number: 1132324323,
+      full_address: 'Avenida da Nokia, 51',
       city: 'Rio de Janeiro',
       state: 'RJ',
       email: 'sac@nokia.com.br'
@@ -62,7 +71,7 @@ describe 'Usuário edita um modelo de produto' do
       height: 25,
       depth: 23,
       sku: 'TV32-SAMS-XPT1U',
-      supplier_id: 1
+      supplier: supplier_1
     )
 
     visit(root_path)
@@ -87,7 +96,7 @@ describe 'Usuário edita um modelo de produto' do
   end
 
   it 'com campo vazio' do
-    Supplier.create!(
+    supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
       registration_number: 362173621,
@@ -96,6 +105,15 @@ describe 'Usuário edita um modelo de produto' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    supplier_2 = Supplier.create!(
+      corporate_name: 'Nokia LTDA',
+      brand_name: 'Nokia',
+      registration_number: 1132324323,
+      full_address: 'Avenida da Nokia, 51',
+      city: 'Rio de Janeiro',
+      state: 'RJ',
+      email: 'sac@nokia.com.br'
+    )
     ProductModel.create!(
       name: 'TV-32',
       weight: 1000,
@@ -103,7 +121,7 @@ describe 'Usuário edita um modelo de produto' do
       height: 25,
       depth: 23,
       sku: 'TV32-SAMS-XPT1U',
-      supplier_id: 1
+      supplier: supplier_1
     )
 
     visit(root_path)

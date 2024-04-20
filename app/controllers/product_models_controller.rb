@@ -17,7 +17,7 @@ class ProductModelsController < ApplicationController
 
     if @product_model.save
       flash[:notice] = 'Modelo de Produto cadastrado com sucesso!'
-      redirect_to(product_model_path(@product_model.id))
+      redirect_to(@product_model)
     else
       @suppliers = Supplier.all
       flash.now[:notice] = 'Modelo de Produto não cadastrado.'
@@ -32,7 +32,7 @@ class ProductModelsController < ApplicationController
   def update
     if @product_model.update(product_model_params())
       flash[:notice] = 'Modelo de Produto atualizado com sucesso!'
-      redirect_to(product_model_path(@product_model.id))
+      redirect_to(@product_model)
     else
       @suppliers = Supplier.all
       flash.now[:notice] = 'Modelo de Produto não pôde ser atualizado.'

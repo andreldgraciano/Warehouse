@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário cadastra um modelo de produto' do
   it 'com sucesso' do
-    Supplier.create!(
+    supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
       registration_number: 362173621,
@@ -11,7 +11,7 @@ describe 'Usuário cadastra um modelo de produto' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
-    Supplier.create!(
+    supplier_2 = Supplier.create!(
       corporate_name: 'Nokia LTDA',
       brand_name: 'Nokia',
       registration_number: 1132324323,
@@ -42,7 +42,7 @@ describe 'Usuário cadastra um modelo de produto' do
   end
 
   it 'com dados imcompletos' do
-    Supplier.create!(
+    supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
       registration_number: 362173621,
@@ -51,7 +51,7 @@ describe 'Usuário cadastra um modelo de produto' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
-    Supplier.create!(
+    supplier_2 = Supplier.create!(
       corporate_name: 'Nokia LTDA',
       brand_name: 'Nokia',
       registration_number: 1132324323,
