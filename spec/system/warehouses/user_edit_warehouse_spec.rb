@@ -9,7 +9,8 @@ describe 'Usuário edita um galpão' do
       area: 80_000,
       address: 'Avenida do aeroporto ,123',
       zip: 3812783812,
-      description: 'Galpão do aeroporto de SP')
+      description: 'Galpão do aeroporto de SP'
+    )
 
     visit(root_path)
     click_on('Aeroporto SP')
@@ -33,7 +34,8 @@ describe 'Usuário edita um galpão' do
       area: 80_000,
       address: 'Avenida do aeroporto ,123',
       zip: 3812783812,
-      description: 'Galpão do aeroporto de SP')
+      description: 'Galpão do aeroporto de SP'
+    )
 
     visit(root_path)
     click_on('Aeroporto SP')
@@ -65,7 +67,8 @@ describe 'Usuário edita um galpão' do
       area: 80_000,
       address: 'Avenida do aeroporto ,123',
       zip: 3812783812,
-      description: 'Galpão do aeroporto de SP')
+      description: 'Galpão do aeroporto de SP'
+    )
 
     visit(root_path)
     click_on('Aeroporto SP')

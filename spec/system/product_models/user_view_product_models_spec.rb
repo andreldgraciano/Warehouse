@@ -1,18 +1,7 @@
 require 'rails_helper'
 
-describe 'Usuário vê modelos de produtos' do
-  it 'a partir do menu' do
-    #
-
-    visit(root_path)
-    within('nav') do
-      click_on('Modelos de Produtos')
-    end
-
-    expect(current_path).to eq(product_models_path)
-  end
-
-  it 'com sucesso' do
+describe 'Usuário acessa o app e a partir da home' do
+  it 'vê os modelos de produtos cadastrados' do
     Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -20,7 +9,8 @@ describe 'Usuário vê modelos de produtos' do
       full_address: 'Rua da Samsung, 321',
       city: 'São Paulo',
       state: 'SP',
-      email: 'sac@samsung.com.br')
+      email: 'sac@samsung.com.br'
+    )
     ProductModel.create!(
       name: 'TV-32',
       weight: 1000,
@@ -28,7 +18,8 @@ describe 'Usuário vê modelos de produtos' do
       height: 25,
       depth: 23,
       sku: 'TV32-SAMS-XPT1U',
-      supplier_id: 1)
+      supplier_id: 1
+    )
     ProductModel.create!(
       name: 'SOUNDBOX',
       weight: 500,
@@ -36,7 +27,8 @@ describe 'Usuário vê modelos de produtos' do
       height: 15,
       depth: 12,
       sku: 'SBOX-XLSJ-KPM',
-      supplier_id: 1)
+      supplier_id: 1
+    )
 
     visit(root_path)
     within('nav') do
@@ -51,7 +43,7 @@ describe 'Usuário vê modelos de produtos' do
     expect(page).to have_content('Samsung')
   end
 
-  it 'e não existem produtos cadastrados' do
+  it 'e vê que não existem modelos de produtos cadastrados' do
     #
 
     visit(root_path)

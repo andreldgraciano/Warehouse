@@ -9,12 +9,11 @@ describe 'Usuário edita um fornecedor' do
       full_address: 'Rua da Samsung, 321',
       city: 'São Paulo',
       state: 'SP',
-      email: 'sac@samsung.com.br')
+      email: 'sac@samsung.com.br'
+    )
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Samsung')
     click_on('Editar')
 
@@ -36,12 +35,11 @@ describe 'Usuário edita um fornecedor' do
       full_address: 'Rua da Samsung, 321',
       city: 'São Paulo',
       state: 'SP',
-      email: 'sac@samsung.com.br')
+      email: 'sac@samsung.com.br'
+    )
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Samsung')
     click_on('Editar')
     fill_in('Razão Social', with: 'Samsung Eletronics LTDA')
@@ -71,12 +69,11 @@ describe 'Usuário edita um fornecedor' do
       full_address: 'Rua da Samsung, 321',
       city: 'São Paulo',
       state: 'SP',
-      email: 'sac@samsung.com.br')
+      email: 'sac@samsung.com.br'
+    )
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Samsung')
     click_on('Editar')
     fill_in('Nome Fantasia', with: '')

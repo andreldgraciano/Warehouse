@@ -9,7 +9,8 @@ describe 'Usuário remove um galpão' do
       area: 80_000,
       address: 'Avenida do aeroporto ,123',
       zip: 3812783812,
-      description: 'Galpão do aeroporto de SP')
+      description: 'Galpão do aeroporto de SP'
+    )
 
     visit(root_path)
     click_on('Aeroporto SP')
@@ -29,7 +30,8 @@ describe 'Usuário remove um galpão' do
       area: 30_000,
       address: 'Rua do galpão SP, 1213',
       zip: 4235342523,
-      description: 'Descricao galpao SP')
+      description: 'Descricao galpao SP'
+    )
     Warehouse.create!(
       name: 'Rio',
       code: 'SDU',
@@ -37,7 +39,8 @@ describe 'Usuário remove um galpão' do
       area: 50_000,
       address: 'Rua do galpão RJ, 123',
       zip: 321312312,
-      description: 'Descricao galpao RJ')
+      description: 'Descricao galpao RJ'
+    )
 
     visit(root_path)
     click_on('Sampa')

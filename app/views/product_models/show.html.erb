@@ -1,0 +1,13 @@
+<h2>Modelo de Produto:<%= @product_model.name %></h2>
+
+<h3><%= @product_model.name %></h3>
+
+<ul>
+  <li><p>Fornecedor: <%= @product_model.supplier.brand_name %></p></li>
+  <li><p>Cidade: <%= @product_model.width %> x <%= @product_model.height %> x <%= @product_model.depth %></p></li>
+  <li><p>SKU: <%= @product_model.sku %></p></li>
+  <li><p>Peso: <%= @product_model.weight %></p></li>
+</ul>
+
+<%= link_to('Editar', edit_product_model_path(@product_model.id)) %>
+<%= link_to('Voltar', product_models_path) %>

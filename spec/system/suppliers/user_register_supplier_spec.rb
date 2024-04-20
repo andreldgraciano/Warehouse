@@ -5,9 +5,7 @@ describe 'Usuário cadastra um fornecedor' do
     # Arrange
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Cadastrar Fornecedor')
 
     expect(page).to have_field('Razão Social')
@@ -23,9 +21,7 @@ describe 'Usuário cadastra um fornecedor' do
     # Arrange
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Cadastrar Fornecedor')
     fill_in('Razão Social', with: 'Samsung Eletronics LTDA')
     fill_in('Nome Fantasia', with: 'Samsung')
@@ -48,9 +44,7 @@ describe 'Usuário cadastra um fornecedor' do
     # Arrange
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
     click_on('Cadastrar Fornecedor')
     fill_in('Razão Social', with: '')
     fill_in('Nome Fantasia', with: 'Samsung')

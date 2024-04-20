@@ -9,7 +9,8 @@ describe 'Usuário acessa o app' do
       area: 50_000,
       address: 'Rua do galpão RJ, 123',
       zip: 321312312,
-      description: 'Descricao galpao RJ')
+      description: 'Descricao galpao RJ'
+    )
     Warehouse.create!(
       name: 'Sampa',
       code: 'SPY',
@@ -17,7 +18,8 @@ describe 'Usuário acessa o app' do
       area: 30_000,
       address: 'Rua do galpão SP, 313',
       zip: 4235342523,
-      description: 'Descricao galpao SP')
+      description: 'Descricao galpao SP'
+    )
 
     visit(root_path)
 

@@ -9,7 +9,8 @@ describe 'Usuário acessa o app e a partir da home' do
       full_address: 'Rua da Samsung, 321',
       city: 'São Paulo',
       state: 'SP',
-      email: 'sac@samsung.com.br')
+      email: 'sac@samsung.com.br'
+    )
     Supplier.create!(
       corporate_name: 'Nokia LTDA',
       brand_name: 'Nokia',
@@ -17,7 +18,8 @@ describe 'Usuário acessa o app e a partir da home' do
       full_address: 'Rua da Nokia, 321',
       city: 'Rio de Janeiro',
       state: 'RJ',
-      email: 'sac@nokia.com.br')
+      email: 'sac@nokia.com.br'
+    )
 
     visit(root_path)
     within('nav') do
@@ -38,9 +40,7 @@ describe 'Usuário acessa o app e a partir da home' do
     # Arrange
 
     visit(root_path)
-    within('nav') do
-      click_on('Fornecedores')
-    end
+    click_on('Fornecedores')
 
     expect(page).to have_content('Não existem fornecedores cadastrados.')
   end

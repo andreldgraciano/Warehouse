@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário vê detalhes de um fornecedor' do
+describe 'Usuário vê detalhes de um modelo de produto' do
   it 'e vê informações adicionais' do
     Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
@@ -11,18 +11,23 @@ describe 'Usuário vê detalhes de um fornecedor' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    ProductModel.create!(
+      name: 'TV-32',
+      weight: 1000,
+      width: 20,
+      height: 25,
+      depth: 23,
+      sku: 'TV32-SAMS-XPT1U',
+      supplier_id: 1
+    )
 
     visit(root_path)
-    click_on('Fornecedores')
-    click_on('Samsung')
+    click_on('Modelos de Produtos')
+    click_on('TV-32')
 
-    expect(page).to have_content('Samsung Eletronics LTDA')
+    expect(page).to have_content('TV-32')
+    expect(page).to have_content('TV32-SAMS-XPT1U')
     expect(page).to have_content('Samsung')
-    expect(page).to have_content('362173621')
-    expect(page).to have_content('Rua da Samsung, 321')
-    expect(page).to have_content('São Paulo')
-    expect(page).to have_content('SP')
-    expect(page).to have_content('sac@samsung.com.br')
   end
 
   it 'e volta para a tela inicial' do
@@ -35,10 +40,19 @@ describe 'Usuário vê detalhes de um fornecedor' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    ProductModel.create!(
+      name: 'TV-32',
+      weight: 1000,
+      width: 20,
+      height: 25,
+      depth: 23,
+      sku: 'TV32-SAMS-XPT1U',
+      supplier_id: 1
+    )
 
     visit(root_path)
-    click_on('Fornecedores')
-    click_on('Samsung')
+    click_on('Modelos de Produtos')
+    click_on('TV-32')
     click_on('Galpões')
 
     expect(current_path).to eq(root_path)
