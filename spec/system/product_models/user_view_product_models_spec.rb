@@ -1,7 +1,31 @@
 require 'rails_helper'
 
-describe 'Usuário acessa o app e a partir da home' do
-  it 'vê os modelos de produtos cadastrados' do
+describe 'Usuário acessa modelos de produtos' do
+  it 'sem estar autenticado' do
+    #
+
+    visit(root_path)
+    within('nav') do
+      click_on('Modelos de Produtos')
+    end
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  it 'a partir do menu' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
+
+    login_as(user)
+    visit(root_path)
+    within('nav') do
+      click_on('Modelos de Produtos')
+    end
+
+    expect(current_path).to eq(product_models_path)
+  end
+
+  it 'e vê os modelos de produtos cadastrados' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
     supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -39,6 +63,7 @@ describe 'Usuário acessa o app e a partir da home' do
       supplier: supplier_1
     )
 
+    login_as(user)
     visit(root_path)
     within('nav') do
       click_on('Modelos de Produtos')
@@ -53,8 +78,9 @@ describe 'Usuário acessa o app e a partir da home' do
   end
 
   it 'e vê que não existem modelos de produtos cadastrados' do
-    #
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
 
+    login_as(user)
     visit(root_path)
     within('nav') do
       click_on('Modelos de Produtos')

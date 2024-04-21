@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário vê detalhes de um modelo de produto' do
   it 'e vê informações adicionais' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
     supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -30,6 +31,7 @@ describe 'Usuário vê detalhes de um modelo de produto' do
       supplier: supplier_2
     )
 
+    login_as(user)
     visit(root_path)
     click_on('Modelos de Produtos')
     click_on('TV-32')
@@ -40,6 +42,7 @@ describe 'Usuário vê detalhes de um modelo de produto' do
   end
 
   it 'e volta para a tela inicial' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
     supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -68,6 +71,7 @@ describe 'Usuário vê detalhes de um modelo de produto' do
       supplier: supplier_1
     )
 
+    login_as(user)
     visit(root_path)
     click_on('Modelos de Produtos')
     click_on('TV-32')

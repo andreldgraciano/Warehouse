@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário cadastra um modelo de produto' do
   it 'com sucesso' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
     supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -21,6 +22,7 @@ describe 'Usuário cadastra um modelo de produto' do
       email: 'sac@nokia.com.br'
     )
 
+    login_as(user)
     visit(root_path)
     click_on('Modelos de Produtos')
     click_on('Cadastrar Modelo de Produto')
@@ -42,6 +44,7 @@ describe 'Usuário cadastra um modelo de produto' do
   end
 
   it 'com dados imcompletos' do
+    user = User.create!(name: 'Andre', email: 'andre@email.com', password: 'andre123')
     supplier_1 = Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -61,6 +64,7 @@ describe 'Usuário cadastra um modelo de produto' do
       email: 'sac@nokia.com.br'
     )
 
+    login_as(user)
     visit(root_path)
     click_on('Modelos de Produtos')
     click_on('Cadastrar Modelo de Produto')

@@ -1,7 +1,18 @@
 require 'rails_helper'
 
-describe 'Usuário acessa o app e a partir da home' do
-  it 'vê os fornecedores cadastrados' do
+describe 'Usuário acessa fornecedores' do
+  it 'a partir do menu' do
+    #
+
+    visit(root_path)
+    within('nav') do
+      click_on('Fornecedores')
+    end
+
+    expect(current_path).to eq(suppliers_path)
+  end
+
+  it 'e vê os fornecedores cadastrados' do
     Supplier.create!(
       corporate_name: 'Samsung Eletronics LTDA',
       brand_name: 'Samsung',
@@ -36,7 +47,7 @@ describe 'Usuário acessa o app e a partir da home' do
 
   end
 
-  it 'vê que não existem fornecedores cadastrados' do
+  it 'e vê que não existem fornecedores cadastrados' do
     # Arrange
 
     visit(root_path)
