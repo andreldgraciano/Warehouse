@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe 'Usuario se autentica' do
   it 'com sucesso' do
-    User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
+    User.create!(
+      email: 'andre@gmail.com',
+      password: 'andre123@',
+      name: 'André Dias'
+    )
 
     visit(root_path)
     click_on('Entrar')
@@ -21,7 +25,11 @@ describe 'Usuario se autentica' do
   end
 
   it 'e faz logout' do
-    User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
+    User.create!(
+      email: 'andre@gmail.com',
+      password: 'andre123@',
+      name: 'André Dias'
+    )
 
     visit(root_path)
     click_on('Entrar')

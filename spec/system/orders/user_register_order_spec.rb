@@ -48,6 +48,7 @@ describe 'Usuário cadastra um pedido' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    allow(SecureRandom).to receive(:alphanumeric).and_return('ABCD123456')
 
     login_as(user)
     visit(root_path)
@@ -60,6 +61,7 @@ describe 'Usuário cadastra um pedido' do
     expect(current_path).to eq(order_path(1))
     expect(page).to have_content('Listar Pedidos')
     expect(page).to have_content('Pedido registrado com sucesso.')
+    expect(page).to have_content('ABCD123456')
     expect(page).to have_content('SDU - Rio')
     expect(page).to have_content('Samsung Eletronics LTDA')
     expect(page).to have_content('André Dias - andre@gmail.com')
