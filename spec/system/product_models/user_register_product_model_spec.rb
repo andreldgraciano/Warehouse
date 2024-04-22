@@ -35,6 +35,7 @@ describe 'Usuário cadastra um modelo de produto' do
     select('Nokia', from: 'Fornecedor')
     click_on('Enviar')
 
+    expect(current_path).to eq(product_model_path(1))
     expect(page).to have_content('Modelo de Produto cadastrado com sucesso!')
     expect(page).to have_content('TV 40 polegadas')
     expect(page).to have_content('Nokia')

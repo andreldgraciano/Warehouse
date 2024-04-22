@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
+  before_action(:set_order, only: [:show, :destroy])
   before_action(:authenticate_user!)
 
-  def show
-    @order = Order.find(params[:id])
-  end
+  def index; end
+
+  def show; end
 
   def new
     @order = Order.new
@@ -18,5 +19,17 @@ class OrdersController < ApplicationController
     @order.save
     flash[:notice] = 'Pedido registrado com sucesso.'
     redirect_to(@order)
+  end
+
+  def destroy
+    @order.destroy
+    flash[:notice] = 'Pedido removido com sucesso!'
+    redirect_to(orders_path)
+  end
+
+  private
+
+  def set_order()
+    @order = Order.find(params[:id])
   end
 end

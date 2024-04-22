@@ -1,6 +1,10 @@
-<h1>Pedido</h1>
+<h1><%= Order.model_name.human %> <%= @order.id %></h1>
 
-<p>Galpão: <%= @order.warehouse.name %></p>
-<p>Fornecedor: <%= @order.supplier.corporate_name %></p>
-<p>Usuário Resposável: <%= @order.user.name %> | <%= @order.user.email %></p>
-<p>Data prevista de Entrega: <%= I18n.localize(@order.estimated_delivery_date) %></p>
+<p><%= Order.human_attribute_name(:warehouse_id) %>: <%= @order.warehouse.full_description %></p>
+<p><%= Order.human_attribute_name(:supplier_id) %>: <%= @order.supplier.corporate_name %></p>
+<p><%= Order.human_attribute_name(:user_id) %>: <%= @order.user.description %></p>
+<p><%= Order.human_attribute_name(:estimated_delivery_date) %>: <%= I18n.localize(@order.estimated_delivery_date) %></p>
+
+<%= button_to("Cancelar Pedido #{@order.id}", @order, method: :delete) %>
+
+<%= link_to 'Voltar', orders_path %>

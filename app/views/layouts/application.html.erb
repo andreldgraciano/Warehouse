@@ -9,16 +9,23 @@
   </head>
   <body>
     <header>
-      <h1>Galpões & Estoque</h1>
-      <nav style="font-size: 1.2rem; display: flex; gap: 2rem;">
+      <%= link_to root_path do %>
+        <h1>Galpões & Estoque</h1>
+      <% end %>
+      <nav style="font-size: 1.2rem; display: flex; gap: 0.5rem;">
         <%= link_to 'Galpões', root_path %> |
         <%= link_to 'Fornecedores', suppliers_path %> |
         <%= link_to 'Modelos de Produtos', product_models_path %> |
-        <%= link_to 'Registrar Pedido', new_order_path %> |
         <% if user_signed_in? %>
-          Olá, <%= current_user.name %> |
+          <% if @user_orders.any? %>
+            <%= link_to 'Listar Pedidos', orders_path %> |
+          <% else %>
+            <%= link_to 'Registrar Pedido', new_order_path %> |
+          <% end %>
+          <%= current_user.name %> |
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
+          <%= link_to 'Registrar Pedido', new_order_path %> |
           <%= link_to 'Entrar', new_user_session_path %>
         <% end %>
       </nav>
