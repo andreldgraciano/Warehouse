@@ -1,11 +1,5 @@
 <% @orders.each do |order|%>
-  <h3><%= link_to "Pedido: #{order.code}", order %></h3>
-  <ul>
-    <li><p>Cliente: <%= current_user.name %></p></li>
-    <li><p>Galpão: <%= order.warehouse.name %></p></li>
-    <li><p>Fornecedor: <%= order.supplier.corporate_name %></p></li>
-    <li><p>Data prevista de entrega: <%= order.estimated_delivery_date %></p></li>
-  </ul>
+  <%= render order %>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>

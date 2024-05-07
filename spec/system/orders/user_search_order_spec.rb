@@ -65,12 +65,14 @@ describe 'Usuario busca por pedido' do
 
     expect(page).to have_content("Resultados da Busca por: #{order.code}")
     expect(page).to have_content('1 Pedido encontrado')
-    expect(page).to have_content("Código: #{order.code}")
+    expect(page).not_to have_content('Nenhum pedido encontrado')
+    expect(page).to have_content("Pedido: #{order.code}")
+    expect(page).to have_content('Usuário Responsável: André Dias - andre@gmail.com')
     expect(page).to have_content('Galpão Destino: SDU - Rio')
     expect(page).to have_content('Fornecedor: Samsung Eletronics LTDA')
   end
 
-  it 'e encontra multiplos pedido' do
+  it 'e encontra multiplos pedidos' do
     user = User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
     warehouse_1 = Warehouse.create!(
       name: 'Rio',
@@ -112,7 +114,7 @@ describe 'Usuario busca por pedido' do
     order_1 = Order.create!(user: user, warehouse: warehouse_1, supplier: supplier_1, estimated_delivery_date: 1.day.from_now)
     allow(SecureRandom).to receive(:alphanumeric).and_return('SDU43df1')
     order_2 = Order.create!(user: user, warehouse: warehouse_1, supplier: supplier_2, estimated_delivery_date: 1.day.from_now)
-    allow(SecureRandom).to receive(:alphanumeric).and_return('SPYk19s7')
+    allow(SecureRandom).to receive(:alphanumeric).and_return('SDUk19s7')
     order_3 = Order.create!(user: user, warehouse: warehouse_2, supplier: supplier_1, estimated_delivery_date: 1.day.from_now)
 
     login_as(user)
@@ -121,13 +123,14 @@ describe 'Usuario busca por pedido' do
     click_on('Buscar')
 
     expect(page).to have_content('Resultados da Busca por: SDU')
-    expect(page).to have_content('2 Pedidos encontrados')
-    expect(page).to have_content('Código: SDU53g0s')
-    expect(page).to have_content('Código: SDU43df1')
+    expect(page).to have_content('3 Pedidos encontrados')
+    expect(page).to have_content('Pedido: SDU53g0s')
+    expect(page).to have_content('Pedido: SDU43df1')
+    expect(page).to have_content('Pedido: SDUk19s7')
+    expect(page).to have_content('Usuário Responsável: André Dias - andre@gmail.com')
     expect(page).to have_content('Galpão Destino: SDU - Rio')
+    expect(page).to have_content('Galpão Destino: SPY - Sampa')
     expect(page).to have_content('Fornecedor: Samsung Eletronics LTDA')
     expect(page).to have_content('Fornecedor: Nokia LTDA')
-    expect(page).not_to have_content('Código: SPYk19s7')
-    expect(page).not_to have_content('Galpão Destino: SPY - Sampa')
   end
 end

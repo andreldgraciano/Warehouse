@@ -3,9 +3,7 @@
 <% if @orders.any? %>
   <p><%= @orders.count %> <%= Order.model_name.human(count: @orders.count) %> <%= t(:found, count: @orders.count) %></p>
   <% @orders.each do |order| %>
-    <p>Código: <%= order.code %></p>
-    <p>Galpão Destino: <%= order.warehouse.full_description %></p>
-    <p>Fornecedor: <%= order.supplier.corporate_name %></p>
+    <%= render order %>
   <% end %>
 <% else  %>
   <p>Nenhum pedido encontrado</p>

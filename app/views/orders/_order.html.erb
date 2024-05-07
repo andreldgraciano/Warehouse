@@ -1,0 +1,7 @@
+<h3><%= link_to "Pedido: #{order.code}", order %></h3>
+<ul>
+  <li><%= Order.human_attribute_name(:user_id) %>: <%= order.user.description %></li>
+  <li><%= Order.human_attribute_name(:warehouse_id) %>: <%= order.warehouse.full_description %></li>
+  <li><%= Order.human_attribute_name(:supplier_id) %>: <%= order.supplier.corporate_name %></li>
+  <li><%= Order.human_attribute_name(:estimated_delivery_date) %>: <%= I18n.localize(order.estimated_delivery_date) %></li>
+</ul>
