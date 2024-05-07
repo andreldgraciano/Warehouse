@@ -24,7 +24,12 @@
             <%= link_to 'Registrar Pedido', new_order_path %> |
           <% end %>
           <%= current_user.name %> |
-          <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+          <%= form_with(url: search_orders_path, method: :get) do |form| %>
+            <%= form.label :query, 'Buscar Pedido' %>
+            <%= form.text_field :query %>
+            <%= form.submit 'Buscar' %>
+          <% end %>
+          |<%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Registrar Pedido', new_order_path %> |
           <%= link_to 'Entrar', new_user_session_path %>

@@ -33,6 +33,12 @@ class OrdersController < ApplicationController
     redirect_to(orders_path)
   end
 
+  def search
+    @code = params[:query]
+
+    @order = Order.find_by(code: @code)
+  end
+
   private
 
   def set_order()
