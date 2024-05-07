@@ -2,7 +2,10 @@ class OrdersController < ApplicationController
   before_action(:set_order, only: [:show, :destroy])
   before_action(:authenticate_user!)
 
-  def index; end
+  def index
+    # <% @user_orders.each do |order|%> # NO INDEX DA PARA COLOCAR ASSIM, VER MELHOR DEPOIS
+    @orders = current_user.orders
+  end
 
   def show; end
 
@@ -36,7 +39,7 @@ class OrdersController < ApplicationController
   def search
     @code = params[:query]
 
-    @order = Order.find_by(code: @code)
+    @orders = Order.where("code LIKE ?", "%#{@code}%")
   end
 
   private

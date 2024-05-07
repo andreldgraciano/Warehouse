@@ -1,4 +1,4 @@
-<% @user_orders.each do |order|%>
+<% @orders.each do |order|%>
   <h3><%= link_to "Pedido: #{order.code}", order %></h3>
   <ul>
     <li><p>Cliente: <%= current_user.name %></p></li>

@@ -1,8 +1,12 @@
 <h1>Resultados da Busca por: <%= @code %></h1>
 
-<% if @order.present? %>
-  <h3>1 Pedido encontrado</h3>
-  <p>Código: <%= @code %></p>
-  <p>Galpão Destino: <%= @order.warehouse.full_description %></p>
-  <p>Fornecedor: <%= @order.supplier.corporate_name %></p>
+<% if @orders.any? %>
+  <p><%= @orders.count %> <%= Order.model_name.human(count: @orders.count) %> <%= t(:found, count: @orders.count) %></p>
+  <% @orders.each do |order| %>
+    <p>Código: <%= order.code %></p>
+    <p>Galpão Destino: <%= order.warehouse.full_description %></p>
+    <p>Fornecedor: <%= order.supplier.corporate_name %></p>
+  <% end %>
+<% else  %>
+  <p>Nenhum pedido encontrado</p>
 <% end %>
