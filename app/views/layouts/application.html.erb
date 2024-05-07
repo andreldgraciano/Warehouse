@@ -19,6 +19,7 @@
         <% if user_signed_in? %>
           <% if @user_orders.any? %>
             <%= link_to 'Listar Pedidos', orders_path %> |
+            <%= link_to 'Registrar Pedido', new_order_path %> |
           <% else %>
             <%= link_to 'Registrar Pedido', new_order_path %> |
           <% end %>

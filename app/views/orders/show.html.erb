@@ -1,4 +1,4 @@
-<h1><%= Order.model_name.human %> <%= @order.code %></h1>
+<h1><%= Order.model_name.human %>: <%= @order.code %></h1>
 
 <p><%= Order.human_attribute_name(:warehouse_id) %>: <%= @order.warehouse.full_description %></p>
 <p><%= Order.human_attribute_name(:supplier_id) %>: <%= @order.supplier.corporate_name %></p>
@@ -6,5 +6,5 @@
 <p><%= Order.human_attribute_name(:estimated_delivery_date) %>: <%= I18n.localize(@order.estimated_delivery_date) %></p>
 
 <%= button_to("Cancelar Pedido #{@order.id}", @order, method: :delete) %>
-
+<br>
 <%= link_to 'Voltar', orders_path %>

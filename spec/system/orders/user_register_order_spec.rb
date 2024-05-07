@@ -55,7 +55,7 @@ describe 'Usuário cadastra um pedido' do
     click_on('Registrar Pedido')
     select warehouse_1.full_description, from: 'Galpão Destino'
     select supplier_1.corporate_name, from: 'Fornecedor'
-    fill_in('Data prevista de Entrega', with: '20/12/2022')
+    fill_in('Data prevista de entrega', with: '20/12/2025')
     click_on('Gravar')
 
     expect(current_path).to eq(order_path(1))
@@ -65,7 +65,7 @@ describe 'Usuário cadastra um pedido' do
     expect(page).to have_content('SDU - Rio')
     expect(page).to have_content('Samsung Eletronics LTDA')
     expect(page).to have_content('André Dias - andre@gmail.com')
-    expect(page).to have_content('20/12/2022')
+    expect(page).to have_content('20/12/2025')
     expect(page).not_to have_content('Sampa')
     expect(page).not_to have_content('Nokia')
   end

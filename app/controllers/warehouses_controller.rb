@@ -22,7 +22,7 @@ class WarehousesController < ApplicationController
   def edit; end
 
   def update
-    if @warehouse.update(warehouse_params())
+    if @warehouse.update(warehouse_params)
       flash[:notice] = 'Galpão atualizado com sucesso!'
       redirect_to(@warehouse)
     else

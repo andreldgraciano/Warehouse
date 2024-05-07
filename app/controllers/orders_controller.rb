@@ -16,9 +16,15 @@ class OrdersController < ApplicationController
     order_params = params.require(:order).permit(:warehouse_id, :supplier_id, :estimated_delivery_date)
     @order = Order.new(order_params)
     @order.user = current_user
-    @order.save
-    flash[:notice] = 'Pedido registrado com sucesso.'
-    redirect_to(@order)
+    if @order.save
+      flash[:notice] = 'Pedido registrado com sucesso.'
+      redirect_to(@order)
+    else
+      flash.now[:notice] = 'Data prevista de entrega deve ser maior que hoje'
+      @warehouses = Warehouse.all
+      @suppliers = Supplier.all
+      return render('new')
+    end
   end
 
   def destroy

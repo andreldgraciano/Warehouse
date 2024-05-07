@@ -1,5 +1,5 @@
 <% @user_orders.each do |order|%>
-  <h3><%= link_to "Pedido: #{order.id}", order %></h3>
+  <h3><%= link_to "Pedido: #{order.code}", order %></h3>
   <ul>
     <li><p>Cliente: <%= current_user.name %></p></li>
     <li><p>Galpão: <%= order.warehouse.name %></p></li>
