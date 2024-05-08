@@ -11,7 +11,11 @@ describe 'Usuário cadastra um pedido' do
   end
 
   it 'com sucesso' do
-    user = User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
+    user = User.create!(
+      email: 'andre@gmail.com',
+      password: 'andre123@', name:
+      'André Dias'
+    )
     Warehouse.create!(
       name: 'Sampa',
       code: 'SPY',
@@ -55,7 +59,8 @@ describe 'Usuário cadastra um pedido' do
     click_on('Registrar Pedido')
     select warehouse_1.full_description, from: 'Galpão Destino'
     select supplier_1.corporate_name, from: 'Fornecedor'
-    fill_in('Data prevista de entrega', with: '20/12/2025')
+    formatted_date = I18n.localize(1.day.from_now.to_date)
+    fill_in('Data prevista de entrega', with: formatted_date)
     click_on('Gravar')
 
     expect(current_path).to eq(order_path(1))
@@ -65,7 +70,7 @@ describe 'Usuário cadastra um pedido' do
     expect(page).to have_content('SDU - Rio')
     expect(page).to have_content('Samsung Eletronics LTDA')
     expect(page).to have_content('André Dias - andre@gmail.com')
-    expect(page).to have_content('20/12/2025')
+    expect(page).to have_content(formatted_date)
     expect(page).not_to have_content('Sampa')
     expect(page).not_to have_content('Nokia')
   end

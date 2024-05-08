@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe 'Usuario busca por pedido' do
   it 'a partir do menu' do
-    user = User.create!(name: 'Andre', email: 'andre@gmail.com', password: 'password')
+    user = User.create!(
+      name: 'Andre',
+      email: 'andre@gmail.com',
+      password: 'password'
+    )
 
     login_as(user)
     visit root_path
@@ -25,7 +29,11 @@ describe 'Usuario busca por pedido' do
   end
 
   it 'e não possui pedidos referente a busca' do
-    user = User.create!(name: 'Andre', email: 'andre@gmail.com', password: 'password')
+    user = User.create!(
+      name: 'Andre',
+      email: 'andre@gmail.com',
+      password: 'password'
+    )
 
     login_as(user)
     visit root_path
@@ -37,7 +45,11 @@ describe 'Usuario busca por pedido' do
   end
 
   it 'e encontra um pedido' do
-    user = User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
+    user = User.create!(
+      email: 'andre@gmail.com',
+      password: 'andre123@',
+      name: 'André Dias'
+    )
     warehouse = Warehouse.create!(
       name: 'Rio',
       code: 'SDU',
@@ -56,7 +68,12 @@ describe 'Usuario busca por pedido' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
-    order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now)
+    order = Order.create!(
+      user: user,
+      warehouse: warehouse,
+      supplier: supplier,
+      estimated_delivery_date: 1.day.from_now
+    )
 
     login_as(user)
     visit root_path
@@ -73,7 +90,11 @@ describe 'Usuario busca por pedido' do
   end
 
   it 'e encontra multiplos pedidos' do
-    user = User.create!(email: 'andre@gmail.com', password: 'andre123@', name: 'André Dias')
+    user = User.create!(
+      email: 'andre@gmail.com',
+      password: 'andre123@',
+      name: 'André Dias'
+    )
     warehouse_1 = Warehouse.create!(
       name: 'Rio',
       code: 'SDU',
@@ -111,11 +132,26 @@ describe 'Usuario busca por pedido' do
       email: 'sac@nokia.com.br'
     )
     allow(SecureRandom).to receive(:alphanumeric).and_return('SDU53g0s')
-    order_1 = Order.create!(user: user, warehouse: warehouse_1, supplier: supplier_1, estimated_delivery_date: 1.day.from_now)
+    order_1 = Order.create!(
+      user: user,
+      warehouse: warehouse_1,
+      supplier: supplier_1,
+      estimated_delivery_date: 1.day.from_now
+    )
     allow(SecureRandom).to receive(:alphanumeric).and_return('SDU43df1')
-    order_2 = Order.create!(user: user, warehouse: warehouse_1, supplier: supplier_2, estimated_delivery_date: 1.day.from_now)
+    order_2 = Order.create!(
+      user: user,
+      warehouse: warehouse_1,
+      supplier: supplier_2,
+      estimated_delivery_date: 1.day.from_now
+    )
     allow(SecureRandom).to receive(:alphanumeric).and_return('SDUk19s7')
-    order_3 = Order.create!(user: user, warehouse: warehouse_2, supplier: supplier_1, estimated_delivery_date: 1.day.from_now)
+    order_3 = Order.create!(
+      user: user,
+      warehouse: warehouse_2,
+      supplier: supplier_1,
+      estimated_delivery_date: 1.day.from_now
+    )
 
     login_as(user)
     visit root_path

@@ -4,4 +4,6 @@
   <li><%= Order.human_attribute_name(:warehouse_id) %>: <%= order.warehouse.full_description %></li>
   <li><%= Order.human_attribute_name(:supplier_id) %>: <%= order.supplier.corporate_name %></li>
   <li><%= Order.human_attribute_name(:estimated_delivery_date) %>: <%= I18n.localize(order.estimated_delivery_date) %></li>
+
+  <%= link_to 'Editar', edit_order_path(order) %>
 </ul>

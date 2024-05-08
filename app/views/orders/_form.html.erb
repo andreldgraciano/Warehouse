@@ -1,0 +1,20 @@
+<%= form_with(model: @order) do |form| %>
+  <div>
+    <%= form.label :warehouse_id %>
+    <%= form.collection_select :warehouse_id, @warehouses, :id, :full_description %>
+  </div>
+
+  <div>
+    <%= form.label :supplier_id %>
+    <%= form.collection_select :supplier_id, @suppliers, :id, :corporate_name %>
+  </div>
+
+  <div>
+    <%= form.label :estimated_delivery_date %>
+    <%= form.date_field :estimated_delivery_date %>
+  </div>
+  <br>
+  <%= form.submit 'Gravar' %>
+  <br><br>
+  <%= link_to 'Cancelar', root_path %>
+<% end %>
