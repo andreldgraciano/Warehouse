@@ -7,6 +7,7 @@
 <p><%= Order.human_attribute_name(:status) %>: <%= t(@order.status) %></p>
 
 <h3>Itens do Pedido</h3>
+<%= link_to 'Adicionar Item', new_order_order_item_path(order_id: @order.id) %>
 <% @order.order_items.each do |item| %>
   <p><%= item.quantity %> x <%= item.product_model.name %> </p>
 <% end %>
