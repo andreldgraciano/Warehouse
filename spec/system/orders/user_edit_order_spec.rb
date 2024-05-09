@@ -91,7 +91,7 @@ describe 'Usuario edita um pedido' do
     click_on('Gravar')
 
     expect(current_path).to eq(order_path(order.id))
-    expect(page).to have_content('Pedido atualizado com sucesso!')
+    expect(page).to have_content('Pedido atualizado com sucesso')
     expect(page).to have_content(code)
     expect(page).to have_content('SDU - Rio')
     expect(page).to have_content('Samsung Eletronics LTDA')

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :suppliers, only: [:index, :show, :new, :create, :edit, :update]
   resources :product_models, only: [:index, :show, :new, :create, :edit, :update]
 
-  resources :orders, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :orders, only: [:index, :show, :new, :create, :edit, :update] do
     get 'search', on: :collection
+    post 'delivered', on: :member
+    post 'canceled', on: :member
   end
 end

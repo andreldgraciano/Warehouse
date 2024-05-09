@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action(:authenticate_user!)
-  before_action(:set_order_and_check_user, only: [:show, :edit, :update, :destroy])
+  before_action(:set_order_and_check_user, only: [:show, :edit, :update, :destroy, :delivered, :canceled])
 
   def index
     # <% @user_orders.each do |order|%> # NO INDEX DA PARA COLOCAR ASSIM, VER MELHOR DEPOIS
@@ -21,13 +21,13 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     if @order.save
-      flash[:notice] = 'Pedido registrado com sucesso.'
+      flash[:notice] = 'Pedido registrado com sucesso'
       redirect_to(@order)
     else
-      flash.now[:notice] = 'Data prevista de entrega deve ser maior que hoje'
       @warehouses = Warehouse.all
       @suppliers = Supplier.all
-      return render('new')
+      flash.now[:notice] = 'Não foi possível registrar o pedido'
+      render('new')
     end
   end
 
@@ -38,24 +38,33 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      flash[:notice] = 'Pedido atualizado com sucesso!'
+      flash[:notice] = 'Pedido atualizado com sucesso'
       redirect_to(@order)
     else
-      flash.now[:notice] = 'Pedido não pôde ser atualizado.'
+      flash.now[:notice] = 'Pedido não pôde ser atualizado'
       return render('edit')
     end
   end
 
   def destroy
     @order.destroy
-    flash[:notice] = 'Pedido removido com sucesso!'
+    flash[:notice] = 'Pedido removido com sucesso'
     redirect_to(orders_path)
   end
 
   def search
     @code = params[:query]
-
     @orders = Order.where("code LIKE ?", "%#{@code}%")
+  end
+
+  def delivered
+    @order.delivered!
+    redirect_to @order
+  end
+
+  def canceled
+    @order.canceled!
+    redirect_to @order
   end
 
   private

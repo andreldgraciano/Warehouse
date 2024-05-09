@@ -4,9 +4,17 @@
 <p><%= Order.human_attribute_name(:warehouse_id) %>: <%= @order.warehouse.full_description %></p>
 <p><%= Order.human_attribute_name(:supplier_id) %>: <%= @order.supplier.corporate_name %></p>
 <p><%= Order.human_attribute_name(:estimated_delivery_date) %>: <%= I18n.localize(@order.estimated_delivery_date) %></p>
+<p><%= Order.human_attribute_name(:status) %>: <%= t(@order.status) %></p>
 
-<%= link_to 'Editar', edit_order_path(@order) %>
+<h3>Itens do Pedido</h3>
+<% @order.order_items.each do |item| %>
+  <p><%= item.quantity %> x <%= item.product_model.name %> </p>
+<% end %>
 
-<%= button_to("Cancelar Pedido #{@order.id}", @order, method: :delete) %>
-<br>
+<% if @order.pending? %>
+  <%= button_to 'Entregue', delivered_order_path(@order.id) %> <br>
+  <%= button_to 'Cancelar', canceled_order_path(@order.id) %> <br>
+<% end %>
+
+<%= link_to 'Editar', edit_order_path(@order.id) %><br>
 <%= link_to 'Voltar', orders_path %>
