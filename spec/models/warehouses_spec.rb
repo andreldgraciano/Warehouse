@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Warehouse, type: :model do
   describe '#valid?' do
     it 'falso quando name é vazio' do
-      warehouse = Warehouse.new(name: '',
+      warehouse = Warehouse.new(
+        name: '',
         code: 'SPO',
         city: 'São Paulo',
         area: 80_000,
@@ -18,7 +19,8 @@ RSpec.describe Warehouse, type: :model do
     end
 
     it 'falso quando code é vazio' do
-      warehouse = Warehouse.new(name: 'Galpão Aeroporto SP',
+      warehouse = Warehouse.new(
+        name: 'Galpão Aeroporto SP',
         code: '',
         city: 'São Paulo',
         area: 80_000,
@@ -33,7 +35,8 @@ RSpec.describe Warehouse, type: :model do
     end
 
     it 'falso quando city é vazio' do
-      warehouse = Warehouse.new(name: 'Galpão Aeroporto SP',
+      warehouse = Warehouse.new(
+        name: 'Galpão Aeroporto SP',
         code: 'SPO',
         city: '',
         area: 80_000,

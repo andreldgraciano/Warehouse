@@ -13,14 +13,12 @@ class Order < ApplicationRecord
   validate :estimated_delivery_date_is_future
 
   #antes de conferir a validação
-  before_validation :generate_code
+  before_validation :generate_code, on: :create
 
   private
 
   def generate_code
-    if !self.code
-      self.code = SecureRandom.alphanumeric(10)
-    end
+    self.code = SecureRandom.alphanumeric(10)
   end
 
   def estimated_delivery_date_is_future

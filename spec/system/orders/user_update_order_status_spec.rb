@@ -111,6 +111,7 @@ describe 'Usuário informa novo status de pedido' do
     expect(page).to have_content('Situação do Pedido: Cancelado')
     expect(page).not_to have_button('Entregue')
     expect(page).not_to have_button('Cancelar')
+    estoque = StockProduct.where(product_model: product, warehouse: warehouse).count
     expect(estoque).to eq(0)
   end
 end
