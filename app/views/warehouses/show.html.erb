@@ -10,6 +10,12 @@
   <li><p>CEP: <%= @warehouse.zip %></p></li>
 </ul>
 
+<div>
+  <h2>Itens em Estoque</h2>
+  <% @stocks.each_pair do |product, quantity| %>
+     <%= quantity %> x <%= product.sku %>
+  <% end %>
+</div>
 
 <%= link_to('Editar', edit_warehouse_path(@warehouse)) %>
 <%= button_to('Remover', @warehouse, method: :delete) %>
