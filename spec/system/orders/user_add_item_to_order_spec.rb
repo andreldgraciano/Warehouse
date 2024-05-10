@@ -39,7 +39,7 @@ describe 'Usuário adiciona itens ao pedido' do
       height: '52',
       depth: '32',
       sku: 'TC-32sam',
-      supplier_id: supplier.id
+      supplier: supplier
     )
     product_2 = ProductModel.create!(
       name: 'Celular',
@@ -48,7 +48,7 @@ describe 'Usuário adiciona itens ao pedido' do
       height: '23',
       depth: '12',
       sku: 'CELL-4k2h',
-      supplier_id: supplier.id
+      supplier: supplier
     )
 
     login_as(user)
@@ -112,7 +112,7 @@ describe 'Usuário adiciona itens ao pedido' do
       height: '52',
       depth: '32',
       sku: 'TC-32sam',
-      supplier_id: supplier_1.id
+      supplier: supplier_1
     )
     product_2 = ProductModel.create!(
       name: 'Celular',
@@ -121,7 +121,7 @@ describe 'Usuário adiciona itens ao pedido' do
       height: '23',
       depth: '12',
       sku: 'CELL-4k2h',
-      supplier_id: supplier_2.id
+      supplier: supplier_2
     )
 
     login_as(user)

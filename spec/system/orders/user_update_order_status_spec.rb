@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuário informa novo status de pedido' do
+
   it 'e pedido foi entregue' do
     user = User.create!(
       email: 'andre@gmail.com',
@@ -25,6 +26,15 @@ describe 'Usuário informa novo status de pedido' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    product = ProductModel.create!(
+      name: 'Televisão',
+      weight: '13',
+      width: '32',
+      height: '52',
+      depth: '32',
+      sku: 'TC-32sam',
+      supplier: supplier
+    )
     order = Order.create!(
       user: user,
       warehouse: warehouse,
@@ -32,6 +42,7 @@ describe 'Usuário informa novo status de pedido' do
       estimated_delivery_date: 1.day.from_now,
       status: :pending
     )
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
 
     login_as(user)
     visit(root_path)
@@ -43,6 +54,9 @@ describe 'Usuário informa novo status de pedido' do
     expect(page).to have_content('Situação do Pedido: Entregue')
     expect(page).not_to have_button('Entregue')
     expect(page).not_to have_button('Cancelar')
+    expect(StockProduct.count).to eq(5)
+    estoque = StockProduct.where(product_model: product, warehouse: warehouse).count
+    expect(estoque).to eq(5)
   end
 
   it 'e pedido foi cancelado' do
@@ -69,6 +83,15 @@ describe 'Usuário informa novo status de pedido' do
       state: 'SP',
       email: 'sac@samsung.com.br'
     )
+    product = ProductModel.create!(
+      name: 'Televisão',
+      weight: '13',
+      width: '32',
+      height: '52',
+      depth: '32',
+      sku: 'TC-32sam',
+      supplier: supplier
+    )
     order = Order.create!(
       user: user,
       warehouse: warehouse,
@@ -76,6 +99,7 @@ describe 'Usuário informa novo status de pedido' do
       estimated_delivery_date: 1.day.from_now,
       status: :pending
     )
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
 
     login_as(user)
     visit(root_path)
@@ -87,5 +111,6 @@ describe 'Usuário informa novo status de pedido' do
     expect(page).to have_content('Situação do Pedido: Cancelado')
     expect(page).not_to have_button('Entregue')
     expect(page).not_to have_button('Cancelar')
+    expect(estoque).to eq(0)
   end
 end
